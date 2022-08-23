@@ -1,0 +1,247 @@
+@charset "UTF-8";
+/*---ОБНУЛЕНИЕ-СТИЛЕЙ-------------------------------*/
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:focus, :active {
+  outline: none; }
+
+a:focus, a:active {
+  outline: none; }
+
+nav, footer, header, aside {
+  display: block; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+input, button, textarea {
+  font-family: inherit; }
+
+input::-ms-clear {
+  display: none; }
+
+button {
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+a, a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+ul li {
+  list-style: none; }
+
+img {
+  vertical-align: top; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400; }
+
+/*--------------------*/
+/*---ПОДКЛЮЧЕНИЕ-ШРИФТОВ----------------------------*/
+@font-face {
+  font-family: "PT Sans Regular";
+  src: url("../fonts/PTSansPro-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "PT Sans Bold";
+  src: url("../fonts/PTSansPro-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600; }
+
+@font-face {
+  font-family: "PlayfairDisplay Regular";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "PlayfairDisplay Bold";
+  src: url("../fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600; }
+
+@font-face {
+  font-family: "Post No Bills Jaffna Bold";
+  src: url("../fonts/Post-No-Bills-Jaffna-Bold/postnobillsjaffna/PostNoBillsJaffna-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/*---ИСПОЛЬЗУЕМЫЕ-ЦВЕТА-----------------------------*/
+/*---ОСНОВНОЕ-----------------------------------*/
+body {
+  font-family: "PT Sans Regular", sans-serif;
+  color: #fff; }
+
+._ibg {
+  position: relative; }
+  ._ibg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover; }
+
+/*---404----------------------------------------*/
+.page {
+  text-align: center;
+  min-height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 15px; }
+
+.page__container {
+  border: 3px solid;
+  -webkit-border-image: -webkit-linear-gradient(70deg, #373f36 38%, #1f1f1f 65%);
+  -o-border-image: -o-linear-gradient(70deg, #373f36 38%, #1f1f1f 65%);
+  border-image: linear-gradient(20deg, #373f36 38%, #1f1f1f 65%);
+  border-image-slice: 1;
+  width: 800px;
+  height: 450px;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 0 15px;
+  background: inherit;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; }
+
+.page__container:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+  box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+  -webkit-filter: blur(30px);
+  filter: blur(30px); }
+
+h1 {
+  font-size: 120px;
+  font-family: "Post No Bills Jaffna Bold";
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: -webkit-linear-gradient(45deg, #fff 33%, #373f36 66%, #1f1f1f);
+  background: -o-linear-gradient(45deg, #fff 33%, #373f36 66%, #1f1f1f);
+  background: linear-gradient(45deg, #fff 33%, #373f36 66%, #1f1f1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #1f1f1f;
+  display: table; }
+
+p {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 15px;
+  line-height: 150%;
+  letter-spacing: 0.5px; }
+
+.text {
+  font-weight: 800;
+  text-transform: uppercase; }
+
+.info {
+  color: #fff; }
+
+button.button {
+  padding: 15px 50px;
+  background-color: #1f1f1f;
+  border-radius: 25px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  line-height: 160%;
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  text-transform: uppercase;
+  border: 1px solid #1f1f1f; }
+  button.button:hover {
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#1f1f1f));
+    background: -webkit-linear-gradient(bottom, transparent, #1f1f1f);
+    background: -o-linear-gradient(bottom, transparent, #1f1f1f);
+    background: linear-gradient(to top, transparent, #1f1f1f);
+    border: 1px solid #1f1f1f; }
+
+.page__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+  .page__photo img {
+    -o-object-position: top;
+    object-position: top; }
+
+@media (max-width: 1000px) {
+  .page__container {
+    width: 600px;
+    height: 600px; } }
+
+@media (max-width: 767px) {
+  .page__container {
+    width: 400px;
+    height: 600px; } }
+
+@media (max-width: 540px) {
+  .page__container {
+    width: 300px;
+    height: 550px; } }
+
+@media (max-width: 400px) {
+  .page__container {
+    width: 260px;
+    height: 550px; } }

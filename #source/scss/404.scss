@@ -1,0 +1,201 @@
+/*---ОБНУЛЕНИЕ-СТИЛЕЙ-------------------------------*/
+@import "nuls.scss";
+
+/*---ПОДКЛЮЧЕНИЕ-ШРИФТОВ----------------------------*/
+@font-face {
+	font-family: "PT Sans Regular";
+	src: url("../fonts/PTSansPro-Regular.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "PT Sans Bold";
+	src: url("../fonts/PTSansPro-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "PlayfairDisplay Regular";
+	src: url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "PlayfairDisplay Bold";
+	src: url("../fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Post No Bills Jaffna Bold";
+	src: url("../fonts/Post-No-Bills-Jaffna-Bold/postnobillsjaffna/PostNoBillsJaffna-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+/*---ИСПОЛЬЗУЕМЫЕ-ЦВЕТА-----------------------------*/
+$white: #fff;
+$white-trans: rgba(255,255,255,0.5);
+$grey: #969696;
+$dark_grey: #1f1f1f;
+$dark-trans: rgba(60,60,60,0.5);
+$dark: #0f0f0f;
+$black: #000;
+$accent: #373f36;
+
+
+/*---ОСНОВНОЕ-----------------------------------*/
+body {
+	font-family: "PT Sans Regular", sans-serif;
+	color: $white;
+}
+
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+/*---404----------------------------------------*/
+.page {
+	text-align: center;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 15px;
+}
+
+// Ограничивающий контейнер
+.page__container {
+	border: 3px solid;
+	border-image: linear-gradient(20deg, $accent 38%, $dark_grey 65%);
+	border-image-slice: 1;
+	width: 800px;
+	height: 450px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 0 15px;
+	background: inherit;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+// Эффект стекла
+.page__container:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+  filter: blur(30px);
+}
+
+// Заголовок
+h1 {
+	font-size: 120px;
+	font-family: "Post No Bills Jaffna Bold";
+	margin-bottom: 30px;
+	font-weight: 800;
+	letter-spacing: 0.5px;
+	background: linear-gradient(45deg, $white 33%, $accent 66%, $dark_grey);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: $dark_grey;
+	display: table;
+}
+
+// Параграфы
+p {
+	color: $white;
+	font-size: 20px;
+	margin-bottom: 15px;
+	line-height: 150%;
+	letter-spacing: 0.5px;
+}
+
+// Текст
+.text {
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+// Инфо
+.info {
+	color: $white;
+}
+
+// Кнопка
+button.button {
+	padding: 15px 50px;
+	background-color: $dark_grey;
+	border-radius: 25px;
+	text-align: center;
+	color: $white;
+	font-size: 16px;
+	line-height: 160%;
+	transition: all 0.5s ease 0s;
+	text-transform: uppercase;
+	border: 1px solid $dark_grey;
+	&:hover{
+		background: linear-gradient(to top, transparent, $dark_grey);
+		border: 1px solid $dark_grey;
+	}
+}
+
+.page__photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	img {
+		object-position: top;
+	}
+}
+
+// Брейкпоинты
+@media (max-width: 1000px) {
+	.page__container {
+		width: 600px;
+		height: 600px;
+	}
+}
+@media (max-width: 767px) {
+	.page__container {
+		width: 400px;
+		height: 600px;
+	}
+}
+@media (max-width: 540px) {
+	.page__container {
+		width: 300px;
+		height: 550px;
+	}
+}
+@media (max-width: 400px) {
+	.page__container {
+		width: 260px;
+		height: 550px;
+	}
+}

@@ -1,0 +1,1075 @@
+/*---ОБНУЛЕНИЕ-СТИЛЕЙ-------------------------------*/
+@import "nuls.scss";
+
+/*---ПОДКЛЮЧЕНИЕ-ШРИФТОВ----------------------------*/
+@font-face {
+	font-family: "PT Sans Regular";
+	src: url("../fonts/PTSansPro-Regular.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "PT Sans Bold";
+	src: url("../fonts/PTSansPro-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "PlayfairDisplay Regular";
+	src: url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "PlayfairDisplay Bold";
+	src: url("../fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Post No Bills Jaffna Bold";
+	src: url("../fonts/Post-No-Bills-Jaffna-Bold/postnobillsjaffna/PostNoBillsJaffna-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+/*---ИСПОЛЬЗУЕМЫЕ-ЦВЕТА-----------------------------*/
+$white: #fff;
+$white-trans: rgba(255,255,255,0.5);
+$grey: #969696;
+$dark_grey: #1f1f1f;
+$dark-trans: rgba(60,60,60,0.5);
+$dark: #0f0f0f;
+$black: #000;
+
+
+/*---ОСНОВНОЕ---------------------------------------*/
+body {
+	background-color: $black;
+	font-family: "PT Sans Regular", sans-serif;
+	color: $white;
+}
+
+// Боди с заблокированным скроллом
+body.lock {
+	overflow: hidden;
+}
+body.locked {
+	overflow: hidden;
+}
+
+// Оболочка
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+// Основная часть
+.content {
+	flex: 1 1 auto;
+}
+
+// Контейнер
+._container {
+	max-width: 1300px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+// Фоновые фото
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+/*---ПОВТОРЯЮЩИЕСЯ-СТИЛИ------------------------*/
+.title {
+	font-family: "PlayfairDisplay Bold";
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 36px;
+}
+.text {
+	font-family: "PT Sans Regular", sans-serif;
+	font-size: 14px;
+	line-height: 150%;
+}
+button.button-trans {
+	background-color: transparent;
+	color: $white;
+	border: 1px solid $white;
+	padding: 15px 25px;
+	text-transform: uppercase;
+	transition: all 0.5s ease 0s;
+	&:hover{
+		background-color: $dark;
+	}
+}
+button.button-black {
+	background-color: $dark;
+	padding: 15px;
+	color: $white;
+	text-transform: uppercase;
+	transition: all 0.5s ease 0s;
+	&:hover{
+		background-color: $dark_grey;
+	}
+}
+
+/*---ПОПАПЫ------------------------------------*/
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: all 0.5s ease 0s;
+	z-index: 50;
+}
+
+// Модальное окно при открытии
+.popup.open{
+	opacity: 1;
+	visibility: visible;
+	.popup__content{
+		opacity: 1;
+	}
+}
+
+// Тело
+.popup__body {
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 30px 10px;
+	color: #fff;
+}
+
+// Контент
+.popup__content {
+	background-color: $dark;
+	color: $white;
+	max-width: 800px;
+	padding: 30px;
+	position: relative;
+	z-index: 50;
+	.new-goods__photo {
+		width: 450px;
+	}
+}
+
+// Крестик
+.popup__close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 20px;
+	color: $white;
+	text-decoration: none;
+	opacity: 0.7;
+	transition: all 0.3s ease 0s;
+	&:hover{
+		opacity: 1;
+		color: $grey;
+	}
+}
+
+// Брейкпоинт
+@media (max-width: 830px) {
+	.popup__content {
+		max-width: calc(100vw - 30px);
+	}
+}
+@media (max-width: 539px) {
+	.popup__content {
+		.new-goods__photo {
+			width: calc(100vw - 30px - 60px);
+		}
+	}
+}
+
+/*---Войти-Попап-------------------------------------*/
+div.popup[id="login"], div.popup[id="signup"] {
+	.popup__content{
+		background-color: $dark_grey;
+	}
+	.login__item {}
+	.login__title {
+		margin-bottom: 50px;
+		font-size: 30px;
+	}
+	.login__input {
+		display: flex;
+		flex-direction: column;
+		input {
+			width: 100%;
+			margin: 0 auto;
+			padding: 10px;
+			&:not(:last-child){
+				margin-bottom: 15px;
+			}
+		}
+	}
+	.login__button {
+		margin-top: 30px;
+		text-align: center;
+	}
+}
+
+
+/*---ХЕДЕР------------------------------------------*/
+.header {}
+.fixed {
+	position: fixed;
+	width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 50;
+}
+
+// Верхний хедер
+.top-header {
+	color: $grey;
+	background-color: $black;
+	position: absolute;
+	z-index: 60;
+	padding: 15px 0;
+	font-size: 12px;
+	a {
+		color: $grey;
+		transition: all 0.5s ease 0s;
+		&:hover{
+			color: $white;
+		}
+	}
+	position: relative;
+}
+
+// Контейнер
+.top-header__container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.top-header__contacts {}
+.top-header__reg {}
+
+// Брейкпоинты
+@media (max-width: 520px) {
+	.top-header__container {
+		flex-direction: column;
+		text-align: center;
+	}
+	.top-header__contacts {
+		margin-bottom: 10px;
+	}
+}
+@media (max-width: 370px) {
+	.top-header {
+		font-size: 10px;
+		padding: 10px 0;
+	}
+	.top-header__contacts {
+		margin-bottom: 5px;
+	}
+}
+
+// Основной хедер
+.main-header {
+	background-color: $dark;
+	font-size: 14px;
+}
+
+// Плашка
+.main-header.fixed:before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $dark;
+	z-index: 3;
+}
+
+// Тело
+.main-header__body {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// Лого
+.main-header__logo {
+	position: relative;
+	z-index: 4;
+}
+
+// Кнопки
+.main-header__buttons {
+	position: relative;
+	z-index: 2;
+}
+
+// Иконки
+.main-header__icons {
+	position: relative;
+	z-index: 2;
+}
+
+// Бургер
+.main-header__burger {
+	display: none;
+}
+.main-header__burger span{
+	position: absolute;
+	background-color: $white;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	top: 9px;
+	transition: all 0.3s ease 0s;
+}
+
+// Брейкпоинты
+@media (max-width: 767px) {
+	body.lock{
+		overflow: hidden;
+	}
+	.main-header__body {
+		height: 50px;
+	}
+	.main-header__burger {
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 20px;
+		position: relative;
+		z-index: 3;
+	}
+	.main-header__burger:before, .main-header__burger:after{
+		content: "";
+		background-color: $white;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		transition: all 0.3s ease 0s;
+	}
+	.main-header__burger:before{
+		top: 0;
+	}
+	.main-header__burger:after{
+		bottom: 0;
+	}
+
+	.main-header__burger.active:before {
+		transform: rotate(45deg);
+		top: 9px;
+	}
+	.main-header__burger.active:after {
+		transform: rotate(-45deg);
+		bottom: 9px;
+	}
+	.main-header__burger.active span {
+		transform: scale(0);
+	}
+	.main-header__menu {
+		position: fixed;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		max-height: 300px;
+		background-color: rgba(15,15,15,0.5);
+		padding: 15px 0px 0px 0px;
+		transition: all 0.3s ease 0s;
+		overflow: auto;
+	}
+	.main-header__menu.active{
+		top: 50px;
+		padding-top: 46px;
+	}
+	.main-header__icons{
+		display: flex;
+		justify-content: space-evenly;
+	}
+}
+@media (max-width: 520px) {
+	.main-header__menu.active{
+		top: 50px;
+		padding-top: 70px;
+		z-index: 2;
+	}
+}
+@media (max-width: 370px) {
+	.main-header__menu.active{
+		top: 50px;
+		padding-top: 55px;
+	}
+}
+
+// Контейнер
+.main-header__container {}
+
+// Лого
+.main-header__logo {
+	font-family: "Post No Bills Jaffna Bold";
+	font-size: 36px;
+}
+
+// Меню
+.main-header__menu {
+	display: flex;
+	align-items: center;
+	button {
+		height: 100%;
+		padding: 20px;
+	}
+	img {
+		vertical-align: middle;
+		height: 17px;
+	}
+}
+
+// Брейкпоинт
+@media (max-width: 767px) {
+	.main-header__menu {
+		display: block;
+		button {
+			display: block;
+			background-color: transparent;
+			font-size: 20px;
+			padding: 15px;
+			text-transform: capitalize;
+		}
+		img {
+			height: 25px;
+			margin: 0;
+		}
+		.main-header__icons{
+			text-align: center;
+		}
+	}
+}
+
+
+
+/*---ПЕРВЫЙ-ЭКРАН-----------------------------------*/
+.first-screen {
+	text-transform: uppercase;
+	padding: 263px 0 160px;
+	position: relative;
+	text-align: center;
+}
+
+.first-screen__container {}
+
+// Лого
+.first-screen__logo {
+	max-width: 320px;
+	border: 3px solid $white;
+	margin: 0 auto 80px;
+	opacity: 0;
+	transition: all 6s ease 0s;
+	&._active {
+		opacity: 1;
+	}
+}
+
+// Тайтл
+.first-screen__title {
+	font-size: 64px;
+	display: inline-block;
+	margin-bottom: 15px;
+	margin: 93px auto 15px;
+	border-bottom: 1px solid $white;
+	font-family: "Post No Bills Jaffna Bold";
+	opacity: 0;
+	transition: all 1s ease 0s;
+	&._active {
+		opacity: 1;
+	}
+}
+
+// Сабтайтл
+.first-screen__subtitle {
+	font-size: 22px;
+	margin-bottom: 93px;
+}
+
+// Текст
+.first-screen__text {
+	font-size: 16px;
+	line-height: 150%;
+	max-width: 720px;
+	margin: 0 auto;
+	opacity: 0;
+	transition: all 1s ease 1s;
+	&._active {
+		opacity: 1;
+	}
+}
+
+// Фото
+.first-screen__image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+
+
+/*---НОВОЕ----------------------------------------*/
+.new-collection {}
+
+// Контейнер
+.new-collection__container {
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+}
+
+// Новый сезон
+.new-collection__season {
+	width: calc(1440px * 0.55);
+	padding: 93px 80px;
+	transform: translate(-100%, 0px);
+	opacity: 0;
+	transition: all 1s ease 0s;
+	&._active {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+}
+
+// Тайтл
+.new-collection__title {
+	margin-bottom: 50px;
+}
+
+// Линия
+.line{
+	border: 1px solid $white-trans;
+	text-align: center;
+	width: 150px;
+	margin: 0 auto 50px;
+}
+
+// Слайдер
+.new-collection-slider {
+	position: relative;
+	max-width: 633px;
+	max-height: 300px;
+}
+
+// Айтем слайдера
+.new-collection-slider__item {
+	position: relative;
+	padding: 0 10px;
+}
+
+// Слайдер
+.slick-list {
+	overflow: hidden;
+}
+.slick-track{
+	display: flex;
+	align-items: flex-start;
+}
+
+// Точки слайдера
+.new-collection-slider .slick-dots{
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.new-collection-slider .slick-dots li{
+	list-style: none;
+	margin: 0 10px;
+}
+.new-collection-slider .slick-dots li button{
+	font-size: 0;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	border-radius: 50%;
+}
+.new-collection-slider .slick-dots li.slick-active button{
+	background-color: transparent;
+	border: 1px solid #fff;
+}
+
+.new-goods__photo {}
+.new-goods__name {}
+.new-goods__price {}
+
+// Новая коллекция
+.new-collection__collection {
+	width: calc(1440px * 0.45);
+	text-align: center;
+	position: relative;
+	.new-collection__title{
+		margin: 350px 15px 30px;
+	}
+	.line{
+		margin-bottom: 30px;
+	}
+	transform: translate(100%, 0px);
+	opacity: 0;
+	transition: all 1s ease 0s;
+	&._active {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+}
+
+// Кнопка
+.new-collection__button {
+	margin-bottom: 100px;
+}
+
+// Фото
+.new-collection__photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: -1;
+	img {
+		object-position: top left;
+	}
+}
+
+// Брейкпоинты
+@media (max-width: 1439px) {
+	.new-collection__season {
+		width: calc(100vw * 0.55);
+	}
+	.new-collection__collection {
+		width: calc(100vw * 0.45);
+	}
+}
+@media (max-width: 767px) {
+	.new-collection__collection {
+		width: 100%;
+		padding:5px 0;
+	}
+	.new-collection__season {
+		width: 100%;
+	}
+	.new-collection__container {
+		display: block;
+	}
+}
+@media (max-width: 469px) {
+	.new-collection__season {
+		padding: 93px 15px;
+	}
+	.new-collection-slider {
+		max-height: 100%;
+	}
+}
+
+
+
+/*---СТАРАЯ-КОЛЛЕКЦИЯ-------------------------------*/
+.old-collection {}
+
+// Контейнер
+.old-collection__container {
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+}
+
+// Блок фона
+.old-collection__background {
+	position: relative;
+	width: calc(1440px * 0.45);
+	transform: translate(-100%, 0px);
+	opacity: 0;
+	transition: all 1s ease 0s;
+	&._active {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+}
+
+// Фото
+.old-collection__photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+// Блок текста
+.old-collection__info {
+	text-align: center;
+	width: calc(1440px * 0.55);
+	padding: 100px;
+	.new__button{
+		margin-bottom: 0;
+	}
+	transform: translate(100%, 0px);
+	opacity: 0;
+	transition: all 1s ease 0s;
+	&._active {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+}
+
+// Тайтл
+.old-collection__title {
+	margin-bottom: 30px;
+}
+
+// Текст
+.old-collection__text {
+	margin-bottom: 60px;
+}
+
+// Брейкпоинты
+@media (max-width: 1439px) {
+	.old-collection__background {
+		width: calc(100vw * 0.45);
+	}
+	.old-collection__info {
+		width: calc(100vw * 0.55);
+	}
+}
+@media (max-width: 900px) {
+	.old-collection__background {
+		display: none;
+	}
+	.old-collection__container {
+		justify-content: center;
+	}
+	.old-collection__info {
+		width: 100%;
+	}
+}
+@media (max-width: 767px) {
+	.old-collection__info {
+		padding: 100px 15px;
+		max-width: 700px;
+	}
+}
+
+
+/*---НОВАЯ-КОЛЛЕКЦИЯ-------------------------------*/
+.new-goods {
+	padding: 120px 0 150px;
+}
+
+.new-goods__container {}
+
+// Тайтл
+.new-goods__title {
+	margin-bottom: 50px;
+}
+
+// Таблица
+.new-goods__grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-column-gap: 60px;
+	grid-row-gap: 44px;
+}
+
+.new-goods__item {}
+
+// Фото
+.new-goods__photo {
+	background-color: $dark_grey;
+	img {
+		width: 95%;
+	}
+}
+
+// Наименование
+.new-goods__name, .new-goods__grid a {
+	margin-top: 20px;
+	font-family: "PlayfairDisplay Regular";
+	font-size: 18px;
+	color: $white
+}
+
+// Цена
+.new-goods__price {
+	margin-top: 20px;
+	font-family: "PlayfairDisplay Bold";
+	font-size: 16px;
+	color: $grey;
+}
+
+// Брейкпоинты
+@media (max-width: 1000px) {
+	.new-goods__grid {
+		grid-column-gap: 30px;
+		grid-row-gap: 24px;
+	}
+}
+@media (max-width: 900px) {
+	.new-goods__grid {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: auto;
+	}
+}
+@media (max-width: 767px) {
+	.new-goods__grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media (max-width: 450px) {
+	.new-goods__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+
+
+/*---НАШИ-БРЕНДЫ---------------------------------*/
+.brands {
+	padding: 60px 0;
+	background-color: $dark;
+}
+
+.brands__container {}
+
+// Тайтл
+.brands__title {
+	margin-bottom: 50px;
+}
+
+// Лого
+.brands__logos {
+	display: flex;
+	justify-content: space-between;
+	img {
+		height: 100%;
+	}
+}
+
+// Брейкпоинты
+@media (max-width: 1050px) {
+	.brands__logos {
+		flex-wrap: wrap;
+		img {
+			flex: 0 1 50%;
+		}
+	}
+}
+@media (max-width: 650px) {
+	.brands__logos {
+		flex-direction: column;
+		img {
+			width: 100%;
+		}
+	}
+	.brands__title {
+		font-size: 20px;
+		margin-bottom: 30px;
+	}
+}
+
+
+
+/*---ФУТЕР----------------------------------------*/
+.footer {}
+
+// Основной футер
+.main-footer {
+	position: relative;
+	padding: 60px 0 100px;
+	margin: 0 -15px;
+}
+
+// Контейнер
+.main-footer__container {
+	display: flex;
+	justify-content: space-between;
+}
+
+// О нас
+.main-footer__about {
+	flex: 0 1 33.3333%;
+	padding: 0 15px;
+}
+
+// Тайтл
+.footer__title {
+	font-family: "PlayfairDisplay Regular";
+	text-transform: uppercase;
+	margin-bottom: 40px;
+	font-size: 24px;
+}
+
+.footer__text {}
+
+// Категории
+.main-footer__categories {
+	flex: 0 1 33.3333%;
+	padding: 0 15px;
+}
+
+// Кнопки
+.main-footer__buttons {
+	button {
+		padding: 15px 25px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+}
+.main-footer__button {}
+
+// Рассылка
+.main-footer__send {
+	flex: 0 1 33.3333%;
+	padding: 0 15px;
+	input {
+		padding: 14px;
+		border: 1px solid $dark_grey;
+		background-color: $white-trans;
+		color: $white;
+		font-family: "PlayfairDisplay Regular";
+		font-size: 16px;
+		transition: all 0.5s ease 0s;
+		&::placeholder{
+			color: $white;
+		}
+		&:focus{
+			background-color: $dark_grey;
+			border: 1px solid $white-trans;
+			input::placeholder{
+				display: none;
+			}
+		}
+	}
+	.footer__text{
+		margin-bottom: 40px;
+	}
+}
+
+// Фото
+.main-footer__image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+// Брейкпоинты
+@media (max-width: 767px) {
+	.main-footer__container {
+		flex-direction: column;
+		max-width: 500px;
+		margin: 0 auto;
+		div:first-child, div:nth-child(2){
+			margin-bottom: 40px;
+		}
+	}
+}
+@media (max-width: 529px) {
+	.main-footer {
+		padding: 50px 0;
+	}
+	.main-footer__image {
+		display: none;
+	}
+	.main-footer__container {
+		.footer__title {
+			position: relative;
+			cursor: pointer;
+		}
+		.footer__title:before, .footer__title:after{
+			content: '';
+			width: 10px;
+			height: 1px;
+			background-color: $white;
+			position: absolute;
+			top: 8px;
+		}
+		.footer__title:before {
+			transform: rotate(40deg);
+			right: 8px;
+			transition: all 0.5s ease 0s;
+		}
+		.footer__title:after {
+			transform: rotate(-40deg);
+			right: 0px;
+			transition: all 0.5s ease 0s;
+		}
+		.footer__title.active{
+			&:before, &:after{
+
+			}
+			&:before {
+				transform: rotate(-40deg);
+			}
+			&:after {
+				transform: rotate(40deg);
+			}
+		}
+		.footer__text, .main-footer__buttons, .main-footer__send input, .main-footer__send button{
+			display: none;
+		}
+		div:first-child, div:nth-child(2){
+			margin-bottom: 20px;
+		}
+	}
+}
+
+// Нижний футер
+.bottom-footer {
+	padding: 15px 0;
+	font-size: 12px;
+	color: $grey;
+}
+
+// Контейнер
+.bottom-footer__container {
+	display: flex;
+	justify-content: space-between;
+}
+
+// Линия
+.footer__line {
+	height: 20px;
+	background-color: $white;
+}
